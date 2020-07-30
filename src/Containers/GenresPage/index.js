@@ -6,7 +6,6 @@ import * as list from './movieDatabase';
 import Header from 'Components/Header';
 import { useParams } from 'react-router-dom';
 import Slider from 'Components/MovieSlider/index';
-
 const FlixWrapper = styled.div`
   Width: 80%%;
   height: 80%;
@@ -17,12 +16,14 @@ const FlixWrapper = styled.div`
   color: #ffffff
 `;
 const hStyle = { 
-  color: '#ffffff',
-  fontFamily: 'Helvetica Neue',
-  display : 'block',
-  fontSize: '2em',
-  marginLeft: '1em',
+  
+  width : '30em',
+  overflow: 'hidden',
 };
+const Loader= styled.img`
+height: 2em;
+width: 2em;
+`;
 
 export default function GenresPage(props) {
   
@@ -36,7 +37,7 @@ export default function GenresPage(props) {
 //console.log(genre);
 
 const getGenreMovie=(movList) =>{
-  let genreMovie = movList.filter(mov => (mov.Genre).includes(props.match.params.genres));
+  let genreMovie = movList.filter(mov => (mov.Genre).includes(props.genres));
   console.log(genreMovie);
   setGenreMovie(genreMovie);
 }
@@ -65,10 +66,9 @@ const getMovieDetails= (movTitle)=>{
 
 Promise.all(requests)
 .then((movList) => {
-  
-  getGenreMovie(movList);
+ // getGenreMovie(movList);
   setIsLoaded(true);
-  })
+  setGenreMovie(movList);  })
     
   }
 
@@ -99,7 +99,8 @@ const movieTitles = (data) => {
 
   useEffect( ()=> {
     console.log('Hiii');
-fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&page=1")
+//fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&page=1")
+ fetch("https://api.themoviedb.org/3/discover/movie?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="+props.id)
 .then(response => response.json())
 .then(movieTitles)
   }, [])
@@ -111,12 +112,12 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=b4782d9afceaa0f29c11
   return (
     
       // <FlixWrapper>
-      <div >
+      <div style={hStyle}>
          {/* <div style={hStyle}>Welcome to World of {props.match.params.genres}! </div>  */}
         
    {/* <div className='movieCards'> */}
-   { genreMovie.length == 0 ? (<div> Loading  ....... </div>) : 
-   (
+   { genreMovie.length == 0 ? (<Loader src="./loader.gif"></Loader>) : 
+   ( 
     <Slider>
     {
       genreMovie.map((movieDetails,index)=>(
@@ -127,7 +128,8 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=b4782d9afceaa0f29c11
     }
     </Slider>
 
-   )}
+
+   )} 
 
  {/* </div>    */}
  </div>  

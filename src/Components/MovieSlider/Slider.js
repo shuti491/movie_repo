@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
+import styled from 'styled-components';
 import SliderContext from './context'
 import Content from './Content'
 import SlideButton from './SlideButton'
@@ -7,9 +8,21 @@ import SliderWrapper from './SliderWrapper'
 import useSliding from './useSliding'
 import useSizeElement from './useSizeElement'
 import './Slider.scss'
-
+const OverLay=styled.div`
+    position   : relative;
+    top        : 0;
+    left       : 0;
+    width      : 100%;
+    height     : 100%;
+    background-color : #ffffff;
+   // opacity    : 0.6;
+    // filter     : alpha(opacity=60);
+    z-index    : 6;
+   // display    : none;
+`;
 const Slider=({children,activeSlide})=>{
 const [currentSlide, setCurrentSlide]=useState(activeSlide);
+const [overlay, setOverLay]=useState(false);
 const { width, elementRef } = useSizeElement();
     const {
       handlePrev,
@@ -23,10 +36,13 @@ const { width, elementRef } = useSizeElement();
 
     const handleSelect= movie =>{
       setCurrentSlide(movie);
+      setOverLay(true);
+      console.log("test:"+overlay);
   }
     
 const handleClose = () => {
     setCurrentSlide(null);
+    setOverLay(false);
   };
 
   const contextValue = {
@@ -48,7 +64,8 @@ className={cx('slider',{'slider--open':currentSlide!=null})}
 {hasNext && <SlideButton onClick={handleNext} type="next" />}
 
 </SliderWrapper>
-{currentSlide && <Content movie={currentSlide} onClose={handleClose} />}
+{/* {currentSlide && overlay && <OverLay/> &&<Content movie={currentSlide} onClose={handleClose} />} */}
+{currentSlide &&  <OverLay/> &&<Content movie={currentSlide} onClose={handleClose} />}
 
  </SliderContext.Provider>
 

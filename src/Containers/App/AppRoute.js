@@ -9,22 +9,58 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  NavLink
 } from "react-router-dom";
 
 
 
 export default function AppRoute() {
+  const NavWrapper = styled.div`
+  width : 100%;  
+  height: 4em;
+  display: flex;
+  background-color: #282828;
+  // float: left;
+  font-weight: bold;
+  color: #ffffff ;
+`;
+
+const Span = styled.span`
+padding :1em;
+// margin: 1em 1em 1em 1em;
+color: #ffffff ;
+font-size: x-large;
+`;
+
+const StyledLink = styled(Link)`
+text-decoration: none;
+color: inherit;
+margin-top: 1em;
+`;
+
+const Logo = styled.div`
+display: contents;
+
+`;
+
   return (
-    
+        
+          
      <Router>
       <div>
-        <ul>
-          <li>
-            <Link to="/">GoCrazy</Link>
-          </li>
-          </ul>
-       
+      <NavWrapper>
+               <Logo className="Logo">
+                   <StyledLink to="/" ><img src="/logo192.png" style={{height: "3em"}} ></img></StyledLink>
+                </Logo>
+
+                <Span>
+                <StyledLink to="/movies" >Movies</StyledLink>
+                </Span>
+                <Span>
+                <StyledLink to="/series" >Series</StyledLink>
+                </Span>               
+                     </NavWrapper>
          <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/movie/:genres" component={GenresPage} />
@@ -45,7 +81,7 @@ export default function AppRoute() {
 // Although the page does not ever refresh, notice how
 // React Router keeps the URL up to date as you navigate
 // through the site. This preserves the browser history,
-// making sure things like the back button and bookmarks
+// making sure things divke the back button and bookmarks
 // work properly.
 
 // export default function BasicExample() {
@@ -53,15 +89,15 @@ export default function AppRoute() {
 //     <Router>
 //       <div>
 //         <ul>
-//           <li>
+//           <div>
 //             <Link to="/">Home</Link>
-//           </li>
-//           <li>
+//           </div>
+//           <div>
 //             <Link to="/about">About</Link>
-//           </li>
-//           <li>
+//           </div>
+//           <div>
 //             <Link to="/dashboard">Dashboard</Link>
-//           </li>
+//           </div>
 //         </ul>
 
 //         <hr />

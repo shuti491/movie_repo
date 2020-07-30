@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Card from 'Components/Card';
 import React from 'react';
 import * as genreList from './genres';
+import GenreSlider from './../../Containers/GenresPage'
 // import Header from 'Components/Header';
 
 const FlixWrapper = styled.div`
@@ -22,12 +23,12 @@ const FlixWrapper = styled.div`
 `;
 
 const Block = styled.div`
-  display : flex;
-  flex-wrap: wrap;
-  height:100% ;
+  // display : flex;
+  // flex-wrap: wrap;
+  height:4em;
   width:100%;
   float:left;
-  margin-top : 1em;
+  // margin-top : 1em;
   
 `;
 export default function HomePage() {
@@ -38,18 +39,19 @@ export default function HomePage() {
     // <Header>
       <FlixWrapper>
             <div >What's your mood?</div>
-            <Block>
        {
           genres.map((genreList ,index)=>(
-             <Card key={index} name={genreList.name}  path={`/movie/${genreList.name}`}></Card>
+            <div>
+              <Card key={index} name={genreList.name}  path={`/movie/${genreList.name}`}></Card>
+              <GenreSlider name= {genreList.name}  id ={ genreList.id }></GenreSlider>
+             </div>
+             
+
           )
 
           )
 
        }
-
-       
-</Block>
       </FlixWrapper>
       // </Header>
   );

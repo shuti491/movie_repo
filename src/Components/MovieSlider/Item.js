@@ -8,6 +8,8 @@ import React, { useState } from 'react';
 import OverLayCard from '../OverLayCard';
 import movieDatabase from 'Containers/GenresPage/movieDatabase';
 import './Item.scss'
+
+
 //export default function MovieCard(props) {
 //const [hover,setHover]=useState(false)
 //   const Wrapper = styled.div`
@@ -58,10 +60,11 @@ return(
 const isActive=currentSlide && currentSlide.Title===movie.Title;
 return(
 <div
-          onMouseEnter={() => onSelectSlide(movie)}
+          onClick={() =>  onSelectSlide(movie)}
           ref={elementRef}
           className={cx('item', {'item--open': isActive})} >
           <img src={movie.Poster} />
+          {/* <span>HI { movie.Plot}</span> */}
 </div>
 );
 }

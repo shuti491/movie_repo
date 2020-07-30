@@ -1,12 +1,13 @@
 .item {
-  flex: 0 0 16.7%;
+  // flex: 0 0 16.7%;
   transition: transform 300ms ease 100ms;
   margin: 0 2px;
   position: relative;
 
   img {
-    height: 19em;
-    width: 16em;
+    height: 4em;
+    width: 3em;
     vertical-align: top;
+    border-radius: 8px;
   }
 }

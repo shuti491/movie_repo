@@ -3,20 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import styled from 'styled-components';
 //  import App from './App';
-import App from './Containers/App/AppRoute'
+import App from './Containers/App/AppRoute';
+
 // import * as serviceWorker from './serviceWorker';
 const AppWrapper = styled.div`
   width : 100%;  
   height: 100%;
   background-color: #000000;
   display:flex;
-  position: absolute
-  
+  position: absolute;
+  overflow-y: scroll;
 `;
 ReactDOM.render(
   <React.StrictMode>
     <AppWrapper>
-    <App />
+         <App />
     </AppWrapper>
   </React.StrictMode>,
   document.getElementById('root')
