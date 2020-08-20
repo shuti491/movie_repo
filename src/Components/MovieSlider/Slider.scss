@@ -22,10 +22,10 @@
   }
 
   &:not(&--open):hover .item {
-    transform: translateX(-25%);
+    transform: translateX(-25%) ;
   }
 
   &:not(&--open) .item:hover ~ .item {
-    transform: translateX(25%);
+    transform: translateX(25%) ;
   }
 }

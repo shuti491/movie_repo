@@ -8,39 +8,40 @@ export default function OverLayCard(props) {
 
   const OverWrapper = styled.div`
   
-  height:10em ;
-  width:8.9em;
+  height:27em ;
+  width:18.9em;
   cursor: pointer;
   float : left;
   position: absolute;
   display:flex;
   background-color: rgba(105,105,105,0.5);
-  text-align: center;
-
+  text-align: left;
+  font-size: 12px;
 }`;
 
 const WatchWrapper=styled.div`
-height: 1.89em;
-width: 8.8em;
+height: 3em;
+width: 18.7em;
 cursor: pointer;
 position: absolute;
 background-color: orange;
-margin-top: 9.9em;
+top:23.4em;
 border-radius: 5px;
 text-align: center;
 
 }`;
 
-console.log(props.details);
+console.log("ooo:"+props.details);
 
   return(
     <div>
     <OverWrapper >
-       IMdb {props.details.imdbRating}
-     </OverWrapper>
-     <WatchWrapper>
+       Plot: {props.details.overview}
+       <WatchWrapper>
        Watch on Netflix
      </WatchWrapper>
+     </OverWrapper>
+     
      </div>
   );
 }

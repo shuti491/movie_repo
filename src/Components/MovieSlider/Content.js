@@ -1,6 +1,5 @@
 import React from 'react';
 import IconCross from './../Icons/IconCross';
-//import CancelIcon from '@material-ui/icons/Cancel';
 import './Content.scss';
 
 const Content = ({ movie, onClose }) => {

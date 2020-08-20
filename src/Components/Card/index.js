@@ -1,24 +1,28 @@
 
 import styled from 'styled-components';
-
+import {Link} from "react-router-dom";
 import React from 'react';
 const Title = styled.h1`
   font-size: 0.6em;
   margin-left : 2em;
   text-align: left;
-  color: darkcyan;
+  color: #ffffff;
   // margin-top: 1.5em;
 
 `;
+const StyledLink = styled(Link)`
+text-decoration: none;
+// color: inherit;
+color: yellowgreen;
+font-size: 0.7em;
+margin-left: 0.5em;
+`;
 
-const Wrapper = styled.section`
-  // background-image:url(https://occ-0-3215-3663.1.nflxso.net/dnm/api/v6/Z-WHgqd_TeJxSuha8aZ5WpyLcX8/AAAABf9YCWbFdf7jdHjpc84DzX4ETB7FarRM3uTRy0R5624TFAeNZLCpLUSkwx_UJLxgcauniLnbEuFn1j-5BpIxqQBNYoxT.png?r=2ca);
-  // border:1px solid darkcyan;
-  height:1em ;
-  width:2em;
-  cursor: pointer;
-  margin-left: 0.75em;
-  border-radius: 2em;
+const StySpan = styled.span`
+color: yellowgreen;
+font-size: 0.7em;
+margin-left: 0.5em;
+cursor: pointer;
 `;
 export default function Card(props) {
   console.log(props.name)
@@ -26,7 +30,7 @@ export default function Card(props) {
   return(
     // <Wrapper  onClick={event =>  window.location.href=props.path}>
       <Title>
-        {props.name}
+        {props.name}  <StyledLink to={props.path}  >More</StyledLink>
       </Title>
     // </Wrapper>
   );

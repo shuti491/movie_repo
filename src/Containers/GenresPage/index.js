@@ -1,11 +1,7 @@
 import styled from 'styled-components';
-// import MovieCard from 'Components/MovieCard/item';
 import React, { useState, useEffect } from 'react';
-import * as list from './movieDatabase';
-// import * as genreList from './genres';
-import Header from 'Components/Header';
-import { useParams } from 'react-router-dom';
-import Slider from 'Components/MovieSlider/index';
+
+ import Slider from 'Components/MovieSlider/index';
 const FlixWrapper = styled.div`
   Width: 80%%;
   height: 80%;
@@ -36,11 +32,11 @@ export default function GenresPage(props) {
 //console.log(prop);
 //console.log(genre);
 
-const getGenreMovie=(movList) =>{
-  let genreMovie = movList.filter(mov => (mov.Genre).includes(props.genres));
-  console.log(genreMovie);
-  setGenreMovie(genreMovie);
-}
+// const getGenreMovie=(movList) =>{
+//   let genreMovie = movList.filter(mov => (mov.Genre).includes(props.genres));
+//   console.log(genreMovie);
+//   setGenreMovie(genreMovie);
+// }
 
 const datarequest= (title)=>{
   let movie={};
@@ -110,26 +106,23 @@ const movieTitles = (data) => {
 
 
   return (
-    
       // <FlixWrapper>
       <div style={hStyle}>
-         {/* <div style={hStyle}>Welcome to World of {props.match.params.genres}! </div>  */}
-        
-   {/* <div className='movieCards'> */}
-   { genreMovie.length == 0 ? (<Loader src="./loader.gif"></Loader>) : 
+ { genreMovie.length == 0 ? (<Loader src="./loader.gif"></Loader>) :  
    ( 
+    
     <Slider>
     {
       genreMovie.map((movieDetails,index)=>(
         // <MovieCard key={index}   { ...movieDetails } path={ `/movie_details/${movieDetails.Title }` }  ></MovieCard>
-        <Slider.Item key={index}  movie={movieDetails} path={ `/movie_details/${movieDetails.Title }` }  >item1</Slider.Item>
+        <Slider.Item key={index}  movie={movieDetails}  path={ `/movie_details/${movieDetails.Title }` }  >item1</Slider.Item>
   
        ))
     }
     </Slider>
-
-
-   )} 
+    
+   )
+    }  
 
  {/* </div>    */}
  </div>  

@@ -2,7 +2,7 @@ import React from "react";
 import Header from "Components/Header"
 import HomePage from "Containers/HomePage/index"
 import GenresPage from "Containers/GenresPage/index"
-import MovieDetailsPage from "Containers/MovieDetailsPage/index"
+import MoreMoviesPage from "Containers/MoreMoviesPage/index"
 import styled from 'styled-components';
 
 import {
@@ -48,7 +48,7 @@ display: contents;
         
           
      <Router>
-      <div>
+      <div style={{width:"100%"}}>
       <NavWrapper>
                <Logo className="Logo">
                    <StyledLink to="/" ><img src="/logo192.png" style={{height: "3em"}} ></img></StyledLink>
@@ -63,11 +63,11 @@ display: contents;
                      </NavWrapper>
          <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/movie/:genres" component={GenresPage} />
-          <Route path="/movie_details/:id" component={MovieDetailsPage} />
+          <Route path="/movie/:genres" component={MoreMoviesPage} />
+          {/* <Route path="/movie_details/:id" component={MovieDetailsPage} /> */}
           
         </Switch>  
-      </div>
+        </div>
      </Router>
      
   );

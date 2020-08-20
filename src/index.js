@@ -16,7 +16,7 @@ const AppWrapper = styled.div`
 `;
 ReactDOM.render(
   <React.StrictMode>
-    <AppWrapper>
+    <AppWrapper className="scrollArea">
          <App />
     </AppWrapper>
   </React.StrictMode>,

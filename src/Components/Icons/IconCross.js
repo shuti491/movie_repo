@@ -1,5 +1,4 @@
 import React from 'react';
-import CancelIcon from '@material-ui/icons/Cancel';
 const IconCross = () => (
   <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
     <path
