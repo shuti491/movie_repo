@@ -14,15 +14,15 @@ const FlixWrapper = styled.div`
   color :lightblue;
 `;
 export default function MoreMoviesPage(props) {
-  const pageGenre=props.match.params.genres
+  let pageGenre=(props && props.match && props.match.params)?props.match.params.genres:''
+  let pageType=(props && props.location && props.location.state)?props.location.state.type:''
 const[page, setPage]=useState(1)
 
 let{
   loading,
   NewMovies ,
   hasMore
-}=getMovies(page, pageGenre);
-
+}=getMovies(page, pageGenre, pageType);
 
 
    const observer= useRef()
@@ -62,16 +62,6 @@ console.log("HAs More:"+hasMore);
         )}
 
 
-           {/* { {movies.map((mov, index)=>{
-             if(movies.length === index+1){
-              return <MovieCard ref={lastMovieCallback} key={index} movie={mov}/>
-             }else 
-             {NewMovies.length > 0 ?  ( <MovieCard   movie={NewMovies}/>) : (<div>Loading ....</div>)}
-              
-             }
-            })}  */}
-   
-          {/* <div>{loading && 'Loading...'}</div> */}
         </FlixWrapper>
          
        

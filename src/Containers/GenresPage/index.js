@@ -22,21 +22,15 @@ width: 2em;
 `;
 
 export default function GenresPage(props) {
-  
+  let url="";
+  let id = null;
   const[error,setError]=useState(null);
   const[isLoaded, setIsLoaded]=useState(false);
   const[genreMovie, setGenreMovie]=useState([]);
   const movTitle=[];
   const movList=[];
-  //let genreMovie=[];
-//console.log(prop);
-//console.log(genre);
-
-// const getGenreMovie=(movList) =>{
-//   let genreMovie = movList.filter(mov => (mov.Genre).includes(props.genres));
-//   console.log(genreMovie);
-//   setGenreMovie(genreMovie);
-// }
+  console.log("type:"+props.type);
+  
 
 const datarequest= (title)=>{
   let movie={};
@@ -64,7 +58,8 @@ Promise.all(requests)
 .then((movList) => {
  // getGenreMovie(movList);
   setIsLoaded(true);
-  setGenreMovie(movList);  })
+  let final=movList.filter(m =>m.Title!=null)
+  setGenreMovie(final);  })
     
   }
 
@@ -84,7 +79,8 @@ Promise.all(requests)
 const movieTitles = (data) => {
        data.results.forEach(
          (mov)=> {
-           movTitle.push(mov.title)
+       (mov.title!=null)? id=mov.title: id=mov.original_name;
+           movTitle.push(id)
          }
        )
        getMovieDetails(movTitle);
@@ -94,12 +90,20 @@ const movieTitles = (data) => {
 
 
   useEffect( ()=> {
-    console.log('Hiii');
-//fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&page=1")
- fetch("https://api.themoviedb.org/3/discover/movie?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="+props.id)
-.then(response => response.json())
-.then(movieTitles)
-  }, [])
+    console.log('Hiii'+props.type);
+    setGenreMovie([]);
+    if(props.type==='movie' || props.type==='tv' ){
+    url="https://api.themoviedb.org/3/discover/"+ props.type +"?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres="+props.id;
+    }    
+
+ fetch(url)
+ .then(response => response.json())
+// .then(movieTitles)
+.then(data =>{
+  console.log(data.results)
+  setGenreMovie(data.results)
+})
+  }, [props.type])
 
 // useEffect(()=> {getMovieTitles}, [])
    
@@ -108,14 +112,15 @@ const movieTitles = (data) => {
   return (
       // <FlixWrapper>
       <div style={hStyle}>
+        
  { genreMovie.length == 0 ? (<Loader src="./loader.gif"></Loader>) :  
    ( 
     
-    <Slider>
+    <Slider type={ props.type}>
     {
       genreMovie.map((movieDetails,index)=>(
         // <MovieCard key={index}   { ...movieDetails } path={ `/movie_details/${movieDetails.Title }` }  ></MovieCard>
-        <Slider.Item key={index}  movie={movieDetails}  path={ `/movie_details/${movieDetails.Title }` }  >item1</Slider.Item>
+        <Slider.Item type={ props.type} key={index}  movie={movieDetails}  path={ `/movie_details/${movieDetails.title }` }  >item1</Slider.Item>
   
        ))
     }

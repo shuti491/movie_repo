@@ -14,23 +14,23 @@ const StyledLink = styled(Link)`
 text-decoration: none;
 // color: inherit;
 color: yellowgreen;
-font-size: 0.7em;
+font-size: 0.5em;
 margin-left: 0.5em;
+cursor: pointer ;
+z-index: 3;
+position:absolute;
+
 `;
 
-const StySpan = styled.span`
-color: yellowgreen;
-font-size: 0.7em;
-margin-left: 0.5em;
-cursor: pointer;
-`;
+
 export default function Card(props) {
   console.log(props.name)
+  console.log("CardType"+props.type)
     
   return(
     // <Wrapper  onClick={event =>  window.location.href=props.path}>
       <Title>
-        {props.name}  <StyledLink to={props.path}  >More</StyledLink>
+        {props.name}  <StyledLink  to={{ pathname: props.path, state: { type: props.type} }} >More</StyledLink>
       </Title>
     // </Wrapper>
   );

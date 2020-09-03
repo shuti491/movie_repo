@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 
 import Card from 'Components/Card';
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import * as genreList from './genres';
 import GenreSlider from './../../Containers/GenresPage'
 //const GenreSlider=React.lazy(()=>import('./../../Containers/GenresPage'));
@@ -32,26 +32,38 @@ const Block = styled.div`
   // margin-top : 1em;
   
 `;
-export default function HomePage() {
-    
-    
+export default function HomePage(props) {
+  
     const genres= genreList.default.genres;
+    let type = (props && props.match && props.match.params) && props.match.params.type ? props.match.params.type : (props &&  props.location && props.location.state) && props.location.state.type;
+    if(type === undefined) {
+      type ='movie'
+     
+    };
+
+    console.log(type)
+   
+useEffect(()=>{
+  document.getElementById('search').value=""
+},[type])
+
   return (
 
       <FlixWrapper>
-            <div >What's your mood?</div>
+            <div >What's your mood? </div>
        {
           genres.map((genreList ,index)=>(
-           <div>
-              <Card key={index} name={genreList.name}  path={`/movie/${genreList.name}`}></Card>
-              <GenreSlider name= {genreList.name}  id ={ genreList.id }></GenreSlider>
+           <div style={{height:'6em'}}>
+              <Card key={index} name={genreList.name}  path={`/${type}/${genreList.name}`} type={type}></Card>
+              <GenreSlider name= {genreList.name}  id ={ genreList.id }  type={type}></GenreSlider>
              </div>
              
           ))
-          // <div>
-          // <Card  name={genres[0].name}  path={`/movie/${genres[0].name}`}></Card>
-          // <GenreSlider name= {genres[0].name}  id ={ genres[0].id }></GenreSlider>
-          // </div>
+          // <div style={{height:'6em'}}>
+          // <Card  name={genres[0].name}  path={`/${type}/${genres[0].name}`}  type={type} ></Card>
+          // <GenreSlider name= {genres[0].name}  id ={ genres[0].id } type={type}></GenreSlider>
+          
+          //</div>
 
           
 

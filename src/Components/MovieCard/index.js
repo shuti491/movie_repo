@@ -10,7 +10,7 @@ export const MovieCard=React.forwardRef((props,ref)=> {
 const [Hover, setHover]=useState(false);
  //console.log('test_props:'+JSON.stringify(props.movie));
   const Wrapper = styled.div`
-  margin:2em;
+  margin:1em;
   border:3px solid #ffffff;
   height:10em ;
   width:7em;

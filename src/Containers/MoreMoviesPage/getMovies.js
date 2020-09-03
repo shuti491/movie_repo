@@ -1,11 +1,10 @@
  import  {useEffect, useState } from 'react';
  import * as genreList from './genres';
 
-export default function GetMovies(page, pageGenre) {
+export default function GetMovies(page, pageGenre,pageType) {
 
 const genres= genreList.default.genres;
 const result=genres.filter(block =>block.name===pageGenre)
-console.log('id'+result[0].id);
 
 const [loading ,setLoading] =useState(true);
 const[NewMovies,setMovies]=useState([]);
@@ -13,9 +12,9 @@ const [hasMore,setHasMore]=useState(true);
 
     useEffect(()=>{
         setLoading(true);
-        console.log("https://api.themoviedb.org/3/discover/movie?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+page+"&with_genres="+result[0].id)
+       // console.log("https://api.themoviedb.org/3/discover/movie?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+page+"&with_genres="+result[0].id)
         
-        fetch("https://api.themoviedb.org/3/discover/movie?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+page+"&with_genres="+result[0].id)
+        fetch("https://api.themoviedb.org/3/discover/"+pageType+"?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+page+"&with_genres="+result[0].id)
         .then(response => response.json())
         .then(data=>{
             console.log("result:"+data.results);
