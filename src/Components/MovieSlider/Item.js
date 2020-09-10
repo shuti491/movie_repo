@@ -8,27 +8,29 @@ import React, { useState } from 'react';
 import OverLayCard from '../OverLayCard';
 import movieDatabase from 'Containers/GenresPage/movieDatabase';
 import './Item.scss'
+import { Link } from 'react-router-dom';
+import ReactPlayer from "react-player"
+import ArrowDown from 'Components/Icons/IconArrowDown'
+export default function  Item(props) {
 
+  const [loaded ,setLoad]= useState(false)
+  // console.log('Hi:'+movie);
+  const [Tlink, setLink]=useState("")
 
-const Item=({movie})=> {
-  
-  console.log('Hi:'+movie);
-
- let trailerLink=""
-
-   function getTLink(slide,event){
-     console.log("id:"+slide.id)
-    fetch("https://api.themoviedb.org/3/movie/"+slide.id+"/videos?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US")
+function getTLink(slide,event){
+  console.log("id:"+loaded)
+    fetch("https://api.themoviedb.org/3/"+props.type+"/"+slide.id+"/videos?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US")
     .then(response => response.json())
     .then(data =>{
       
         let key= data.results[0].key
         console.log("key:"+key)
-        trailerLink="https://www.youtube.com/watch?v="+key
+       let trailerLink="https://www.youtube.com/watch?v="+key
+        setLink(trailerLink)
         console.log("Link:"+trailerLink)
        
     })
-    .then(event.target.play())
+    // .then(event.target.play())
     .catch(e =>console.error(e.message))
    }
 
@@ -37,23 +39,30 @@ return(
 {
 ({onSelectSlide,currentSlide,elementRef})=> {
 
-const isActive=currentSlide && currentSlide.title===movie.title;
+ const isActive=currentSlide && currentSlide.title===props.movie.title;
 return(
 <div
-          onClick={() =>  onSelectSlide(movie)}
+          
           ref={elementRef}
-          className={cx('item', {'item--open': isActive})} >
-          <img src={"http://image.tmdb.org/t/p/w200" + movie.poster_path } />
-          {/* <video
-          poster={"http://image.tmdb.org/t/p/w200"+movie.poster_path}
-          onMouseOver={event => { 
-             getTLink(movie,event) 
-            //  event.target.play()
-          }}
-          onMouseOut={event => event.target.pause()}
-          type={"video/mp4"}
-          src={trailerLink} >
-          </video> */}
+           className={cx('item', {'item--open': isActive})} 
+           onMouseEnter={event => { 
+            setLoad(true)
+             getTLink(props.movie,event) 
+        }}
+       onMouseLeave={()=>setLoad(false)}
+          >
+           
+      <img src={"http://image.tmdb.org/t/p/w200" + props.movie.poster_path  } 
+        className={cx('imag', {'imag--hidden': loaded})}
+         ></img> 
+         
+               {loaded && ( 
+    <ReactPlayer url={Tlink}  className='react-player'  />
+  )}
+   {loaded && ( 
+  <div className='info'  onClick={() =>  onSelectSlide(props.movie)}><img src="/images.png" className="arrow"/></div>
+   )}
+           
 </div>
 );
 }
@@ -63,5 +72,5 @@ return(
 
 
 
-export default Item;
+// export default Item;
 

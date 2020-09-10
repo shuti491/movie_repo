@@ -1,27 +1,20 @@
-/*
- * FeaturePage
- *
- * List all the features
- */
+
 import styled from 'styled-components';
-
-
 import Card from 'Components/Card';
 import React, { Suspense, useEffect, useState } from 'react';
 import * as genreList from './genres';
 import GenreSlider from './../../Containers/GenresPage'
-//const GenreSlider=React.lazy(()=>import('./../../Containers/GenresPage'));
-// import Header from 'Components/Header';
 
 const FlixWrapper = styled.div`
   height: 100%;
   display : block;
   margin : 1em;
-  font-family: 'Helvetica Neue';
-  font-size: xxx-large;
-  color: lightblue
-  
+  font-family:'Helvetica Neue';
+  font-size: 3em;
+  color: #ffffff;
+
 `;
+
 
 const Block = styled.div`
   // display : flex;
@@ -50,7 +43,7 @@ useEffect(()=>{
   return (
 
       <FlixWrapper>
-            <div >What's your mood? </div>
+            <p>What's your mood? </p>
        {
           genres.map((genreList ,index)=>(
            <div style={{height:'6em'}}>
@@ -63,12 +56,11 @@ useEffect(()=>{
           // <Card  name={genres[0].name}  path={`/${type}/${genres[0].name}`}  type={type} ></Card>
           // <GenreSlider name= {genres[0].name}  id ={ genres[0].id } type={type}></GenreSlider>
           
-          //</div>
+          // </div>
 
           
 
        }
       </FlixWrapper>
-      // </Header>
   );
 }

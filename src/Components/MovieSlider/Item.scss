@@ -1,13 +1,40 @@
 .item {
   //flex: 0 0 16.7%;
-  transition: transform 300ms ease 100ms;
+   transition: transform 300ms ease 100ms;
   margin: 0 2px;
   position: relative;
+  height: 5em;
+  width: 4em;
 
-  img {
+  .imag {
     height: 4em;
-    width: 6em;
-    vertical-align: top;
-    border-radius: 8px;
+    width: 4em;
+  }
+
+  .imag--hidden {
+    display: none;
+  }
+  
+  .react-player{
+    height: 4em !important;
+    width: 4em !important;
+  }
+
+  .info{
+   width: 100%;
+    display: flex;
+    font-size: 39%;
+    height: 17%;
+    // background-color:#23201F;
+    background-color:#141414;
+    margin-top: -1rem;
+    cursor: pointer;
+  }
+  
+  .arrow {
+    height:1.5em;
+    margin-left: 4em ;
+    margin-top: 0.7em;
   }
 }
+

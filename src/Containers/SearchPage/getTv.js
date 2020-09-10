@@ -1,20 +1,20 @@
- import  {useEffect, useState } from 'react';
+import  {useEffect, useState } from 'react';
 
-export default function GetMovies(page, searchText,type) {
+export default function GetTv(page, searchText,type) {
 
-const [loading ,setLoading] =useState(true);
-const[NewMovies,setMovies]=useState([]);
-const [hasMore,setHasMore]=useState(true);
+const [loadingTv ,setLoading] =useState(true);
+const[NewTv,setTv]=useState([]);
+const [hasMoreTv,setHasMore]=useState(true);
 
     useEffect(()=>{
-        console.log("I am ghekjhrkjhrgkjtrkjhg")
+        console.log("In tv")
         setLoading(true);
         console.log(page,searchText)
         fetch("https://api.themoviedb.org/3/search/"+type+"?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US&query="+searchText+"&page="+page+"&include_adult=false")
         .then(response => response.json())
         .then(data=>{
             console.log("result:"+ type + data.results);
-           setMovies(prevMovies =>{
+           setTv(prevMovies =>{
             return [...prevMovies,...data.results]
         });
         
@@ -24,6 +24,6 @@ const [hasMore,setHasMore]=useState(true);
     },[page, searchText])
 
     //console.log("In file:"+NewMovies[0].poster_path);
-    return {loading,NewMovies ,hasMore}
+    return {loadingTv,NewTv ,hasMoreTv}
 
  } 
