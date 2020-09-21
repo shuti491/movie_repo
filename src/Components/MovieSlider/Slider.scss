@@ -7,25 +7,32 @@
   &__container {
     display: flex;
     padding: 0 55px;
-    transition: transform 300ms ease 100ms;
+    transition: transform 1s;
+   // transition: transform 200ms ease 800ms;
     z-index: 3;
     width: 100%;
    // width: 30em;
   }
 
-  &:not(&--open) .item:hover .show-details-button {
-    opacity: 1;
-  }
+  // &:not(&--open) .item:hover .show-details-button {
+  //   opacity: 1;
+  // }
 
-  &:not(&--open) .item:hover {
+  // &:not(&--open) .item:hover {
+  //   transform: scale(1.5) !important;
+  //  z-index:4
+  // }
+
+   .item:hover {
     transform: scale(1.5) !important;
+   z-index:4
   }
 
-  &:not(&--open):hover .item {
-    transform: translateX(-25%) ;
-  }
+  // &:not(&--open):hover .item {
+  // transform: translateX(-25%) ;
+  // }
 
-  &:not(&--open) .item:hover ~ .item {
-    transform: translateX(25%) ;
-  }
+  // &:not(&--open) .item:hover ~ .item {
+  //   transform: translateX(25%) ;
+  // }
 }

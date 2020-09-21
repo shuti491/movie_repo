@@ -13,6 +13,14 @@ const FlixWrapper = styled.div`
   font-size: 2em;
   color :lightblue;
 `;
+const Loader= styled.img`
+height: 7em;
+width: 9em;
+left: 50%;
+position: absolute;
+top: 50%;
+
+`;
 
 const OverLay=styled.div`
     position   : relative;
@@ -73,19 +81,19 @@ export default function SearchPage(props){
       <div>
         <FlixWrapper>
         <div>Search results for "{searchText}":  </div>
-        { NewTv.length==0 ||NewMovies.length==0 ? (< div>{loading && 'Loading...'}</div>) : ( 
+        { NewTv.length==0 ||NewMovies.length==0 ? ((<Loader src="./loader.gif"></Loader>)) : ( 
         <div>
             {
-             NewTv.map((mov,index)=>(
-                  <MovieCard  key={index} movie={mov} type={pageTypeTv} handleSelect={handleSelect}/>     
+             NewTv.map((mov,index)=>( 
+                  <MovieCard  key={index} movie={mov} type={pageTypeTv} handleSelect={handleSelect}/>   
              ))
            }
            {
-             NewMovies.map((mov,index)=>(
+             NewMovies.map((mov,index)=>
                (NewMovies.length===index+1)?
                  <MovieCard ref={lastMovieRef} key={index} movie={mov} type={pageType} handleSelect={handleSelect}/>:<MovieCard key={index}  movie={mov} type={pageType} handleSelect={handleSelect}/>
                  
-             ))
+             )
            }
            
         </div>

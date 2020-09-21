@@ -1,7 +1,12 @@
 import  React, {useState, useEffect } from 'react';
-
+import styled from 'styled-components';
 import IconCross from './../Icons/IconCross';
 import './Content.scss';
+const Loader= styled.img`
+height: 5em;
+width: 7em;
+margin-left: 13em;
+`;
 
 export default function Content ( props ){
  
@@ -16,10 +21,12 @@ export default function Content ( props ){
   .then(data =>{
    console.log('Here:'+data)
     setDetails(data)
+    
   } )
   },[title])
 
   return (
+    details.length===0?(<Loader src="./loader.gif"></Loader>) : (
   <div className="content">
     <div className="content__background">
       <div className="content__background__shadow" />
@@ -32,7 +39,7 @@ export default function Content ( props ){
       <div className="content__area__container">
         <div className="content__title">{title}</div>
         <div className="content__description">{props.movie.overview}</div>
-  <div className="content__rating">IMDB : {details.imdbRating}</div>
+  <div className="content__rating">IMDB : {details.imdbRating!=null?details.imdbRating:'N/A'}</div>
   <div className="content__description">
     Release Date : {date } <br/>
     Director : {details.Director}<br/>
@@ -46,6 +53,7 @@ export default function Content ( props ){
       </button>
     </div>
   </div>
+    )
 )
 
 };

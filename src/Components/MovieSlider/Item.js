@@ -2,7 +2,6 @@
 import styled from 'styled-components';
  import cx from 'classnames';
 import ShowDetailsButton from './ShowDetailsButton'
-import Mark from './Mark'
 import SliderContext from './context'
 import React, { useState } from 'react';
 import OverLayCard from '../OverLayCard';
@@ -57,10 +56,11 @@ return(
          ></img> 
          
                {loaded && ( 
-    <ReactPlayer url={Tlink}  className='react-player'  />
+    <ReactPlayer url={Tlink}   playing={true}  className='react-player'  />
   )}
    {loaded && ( 
-  <div className='info'  onClick={() =>  onSelectSlide(props.movie)}><img src="/images.png" className="arrow"/></div>
+  <div className='info'  onClick={() =>  onSelectSlide(props.movie)}><img src="/images.png" className="arrow"/>
+  <span className="tooltip">More Info</span></div>
    )}
            
 </div>

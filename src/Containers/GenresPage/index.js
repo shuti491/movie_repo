@@ -15,6 +15,7 @@ const hStyle = {
   
   width : '30em',
   overflow: 'hidden',
+  height: '4em'
 };
 const Loader= styled.img`
 height: 5em;

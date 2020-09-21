@@ -60,9 +60,9 @@ function getTLink(slide,event,type){
   onMouseLeave={()=>setLoad(false)}
     >
      
-       <img  className={cx('imag', {'imag--hidden': loaded})} ref={ref} src={"http://image.tmdb.org/t/p/w200" + props.movie.poster_path }/> 
+       <img  className={cx('imag', {'imag--hidden': loaded})} ref={ref} src={"http://image.tmdb.org/t/p/w200" + props.movie.poster_path } alt={props.movie.title!=null?props.movie.title:props.movie.original_name}/> 
        {loaded && ( 
-    <ReactPlayer url={Tlink}  className='react-player'  />)}
+    <ReactPlayer url={Tlink}   className='react-player'  />)}
 
 {loaded && ( 
   <div className='info'  onClick={()=>props.handleSelect(props.movie)}>

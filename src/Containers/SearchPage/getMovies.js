@@ -14,8 +14,9 @@ const [hasMore,setHasMore]=useState(true);
         .then(response => response.json())
         .then(data=>{
             console.log("result:"+ type + data.results);
+            let filteredMovie=(data.results).filter(m =>m.poster_path!=null)
            setMovies(prevMovies =>{
-            return [...prevMovies,...data.results]
+            return [...prevMovies,...filteredMovie]
         });
         
         setHasMore(page < data.total_pages)

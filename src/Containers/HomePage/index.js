@@ -43,7 +43,7 @@ useEffect(()=>{
   return (
 
       <FlixWrapper>
-            <p>What's your mood? </p>
+            <p style={{margin:'0em'}}>What's your mood? </p>
        {
           genres.map((genreList ,index)=>(
            <div style={{height:'6em'}}>

@@ -1,10 +1,12 @@
 .item {
   //flex: 0 0 16.7%;
+  padding-top: 0.5em;
    transition: transform 300ms ease 100ms;
   margin: 0 2px;
   position: relative;
   height: 5em;
   width: 4em;
+  
 
   .imag {
     height: 4em;
@@ -17,24 +19,64 @@
   
   .react-player{
     height: 4em !important;
-    width: 4em !important;
+    width: 5em !important;
+  //  z-index:2
   }
 
   .info{
-   width: 100%;
+   width: 18em;
     display: flex;
-    font-size: 39%;
+    font-size: 28%;
     height: 17%;
-    // background-color:#23201F;
-    background-color:#141414;
-    margin-top: -1rem;
-    cursor: pointer;
+    //background-color:#000000;
+    background-color:#050505;
+   // margin-top: -0.5rem;
+   // cursor: pointer;
+   // z-index:4
+   
   }
   
   .arrow {
     height:1.5em;
-    margin-left: 4em ;
-    margin-top: 0.7em;
+    margin-left: 8em ;
+    margin-top: 0.2em;
+    z-index:4;
+    
   }
+
+  .tooltip {
+    visibility: hidden;
+    width: 5em;
+    background-color: rgb(82, 80, 80);
+    color: #000000;
+    text-align: center;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 1;
+    top: 15em;
+    left: 70%;
+    height: 6%;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .tooltip::after {
+    content:"";
+    position: absolute;
+    top: 50%;
+  right: 100%;
+  margin-top: -4px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent rgb(82, 80, 80) transparent transparent;
+  }
+
+  .info:hover .tooltip{
+    visibility: visible;
+    opacity: 1;
+  }
+ 
+
 }
+
 
