@@ -38,6 +38,22 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 Some screenshots of the application:
+Click on movies to see all the latest movies  sorted in genres and displayed in the order of rating , highest rated being the first in the list of genre
+<img src="docs/movies.png" alt="content"/>
+
+Click on series to see all the latest series  sorted in genres and displayed in the order of rating , highest rated being the first in the list of genre
+<img src="docs/series.png" alt="content"/>
+
+Hover on any of the tiles to see the player in action. Related trailer for movies or series start playing. On moving away from tile the player stops
+<img src="docs/player.png" alt="content"/>
+
+Click on the dots of the tile of movie/series to see the details of the movies/series-
 <img src="docs/content.png" alt="content"/>
+
+Click on more on the side of genre like Action to see all the available movies/series in that genre. On Hovering over the tile the trailer is played
+<img src="docs/more.png" alt="content"/>
+<img src="docs/morePlayer.png" alt="content"/>
+
+
 
 
