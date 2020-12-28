@@ -65,6 +65,8 @@ return(
      
    >Series</StyledNavLink>
    </Span>  
+
+   
    <span style={{width:'64%'}}>
      <SearchBar />
    </span>

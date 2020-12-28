@@ -3,6 +3,7 @@ import HomePage from "Containers/HomePage/index"
 import GenresPage from "Containers/GenresPage/index"
 import MoreMoviesPage from "Containers/MoreMoviesPage/index"
 import SearchPage from "Containers/SearchPage/index"
+import DiscoverPage from "Containers/DiscoverPage/index"
 import styled from 'styled-components'
 import NavBar from 'Components/NavBar/index'
 import {
@@ -28,6 +29,7 @@ export default function AppRoute() {
           <Route path="/movie/:genres" component={MoreMoviesPage} />
            <Route path="/tv/:genres" component={MoreMoviesPage} /> 
            <Route path="/search"  component={SearchPage}/>
+           {/* <Route path="/discover"  component={DiscoverPage}/> */}
         </Switch>  
         </div>
      </Router>

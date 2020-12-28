@@ -17,7 +17,7 @@ export default function  Item(props) {
   const [Tlink, setLink]=useState("")
 
 function getTLink(slide,event){
-  console.log("id:"+loaded)
+  // console.log("id:"+loaded)
     fetch("https://api.themoviedb.org/3/"+props.type+"/"+slide.id+"/videos?api_key=b4782d9afceaa0f29c118122d0c8e4bf&language=en-US")
     .then(response => response.json())
     .then(data =>{

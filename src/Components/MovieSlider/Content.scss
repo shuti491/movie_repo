@@ -1,120 +1,102 @@
 .content {
-  // position: relative;
-  // height: 37vw;
-  // margin-top: -40px;
-  // position: fixed;
-  // top: 50%;
-  // left: 50%;
+ 
   z-index: 4;
   height: 100% !important;
     width: 100% !important;
-    position: absolute;
+    position: fixed;
     display: block;
-    z-index: 99999;
     top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.9);
+   left: 0;
+    background: rgba(0, 0, 0, 0.8);
   
   &__background,
   &__background__shadow,
   &__background__image,
   &__area {
-    position: absolute;
-    top: 0;
+   position: absolute;
+   top: 0;
     bottom: 0;
   }
 
+  &__box {
+    height: 90%;
+    width: 54%;
+    position: absolute;
+    left: 25%;
+    top: 5%;
+    overflow: auto;
+    overflow-x: hidden;
+    bottom: 10%;
+  }
+
   &__background {
-    // left: 0;
-    // right: 0;
-    right: 0;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    
     z-index: 3;
-    height: 70%;
-    width: 62%;
+    height: 36%;
+    width: 100%;
 
-    &__shadow {
-      left: 0;
-      background: #000;
-      width: 50%;
-      z-index: 2;
-
-      &:before {
-        content: '';
-        position: absolute;
-        z-index: 10;
-        background-image: linear-gradient(to right,#000,transparent);
-        top: 0;
-        bottom: 0;
-        left: 100%;
-        width: 275px;
-      }
-    }
+   
 
     &__image {
       right: 0;
-      width: 70%;
+      width: 100%;
       height: 100%;
       background-position: center 10%;
-      background-size: cover;
+     // background-size: cover;
       z-index: 1;
+      background-size: 100% 100%;
+    background-repeat: no-repeat;
     }
   }
 
   &__area {
-    //left: 0;
-    //right: 0;
-    //height: 100%;
-    //z-index: 3;
     
+    width: 100%;
+    height: 64%;
+    color: white;
+    top: 34%;
+    background: black;
     &__container {
-      padding: 30px 70px;
-      color: wheat;
-      position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    height: 58%;
-    width: 51%;
+    
+    position: absolute;
+    //background: black;
+    height: 100%;
+    width: 100%;
+    margin:2%
     }
   }
 
   &__title {
+    margin-top: 2%;
     font-size: 45px;
-    color: #fff;
+   // color: #fff;
     font-weight: 700;
   }
 
   &__description {
     font-size: 18px;
-    color: #999;
     margin-top: 20px;
-    max-width: 500px;
+    width: 96%;
   }
 
   &__rating {
     font-size: 18px;
-    color: #fff;
     margin-top: 20px;
-    max-width: 500px;
     font-weight: 600;
   }
 
   &__close {
     color: #404040;
-    width: 40px;
-    height: 40px;
-    background: transparent;
+    //width: 40px;
+   // height: 40px;
+   // background: url("/close.jpg");
     outline: none;
     border: none;
     position: fixed;
-    top: 19%;
-    left: 78%;
-    transform: translate(-50%, -50%);
+    top: 6%;
+    left: 75%;
     z-index: 5;
+    background-size: 0.8em 0.8em;
+    background-repeat: no-repeat;
   }
 }

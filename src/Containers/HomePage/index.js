@@ -57,9 +57,6 @@ useEffect(()=>{
           // <GenreSlider name= {genres[0].name}  id ={ genres[0].id } type={type}></GenreSlider>
           
           // </div>
-
-          
-
        }
       </FlixWrapper>
   );

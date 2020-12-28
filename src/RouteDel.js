@@ -19,9 +19,9 @@ export default function BasicExample() {
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/dashboard">Dashboard</Link>
-          </li>
+          </li> */}
         </ul>
 
         <hr />

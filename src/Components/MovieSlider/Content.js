@@ -13,7 +13,7 @@ export default function Content ( props ){
   const [details,setDetails]=useState([])
   let title= props.movie.title?props.movie.title:props.movie.name
   let date=props.movie.release_date?props.movie.release_date:props.movie.first_air_date
-  let movieURL="http://image.tmdb.org/t/p/w200" + props.movie.poster_path
+  let movieURL="http://image.tmdb.org/t/p/w500" + props.movie.backdrop_path
 
   useEffect(()=>{
   fetch("http://www.omdbapi.com/?apikey=6af37986&t="+title)
@@ -28,8 +28,9 @@ export default function Content ( props ){
   return (
     details.length===0?(<Loader src="./loader.gif"></Loader>) : (
   <div className="content">
+    <div className="content__box">
     <div className="content__background">
-      <div className="content__background__shadow" />
+      {/* <div className="content__background__shadow" /> */}
       <div
         className="content__background__image"
         style={{ 'background-image': `url(${movieURL})` }}
@@ -47,11 +48,15 @@ export default function Content ( props ){
     Run Time : {details.Runtime}<br/>
     Awards : {details.Awards}
   </div>
+  {/* <div className="content__rating">More Like This:</div> */}
       </div>
-      <button className="content__close" onClick={props.onClose}>
-        <IconCross />
-      </button>
+      <div className="content__close"  onClick={props.onClose}>
+        <img src="/close.jpg" style={{ 'height': '9%','width':'9%' }} />
+        </div>
+     {/* <IconCross /> */}
+      {/* </button> */}
     </div>
+  </div>
   </div>
     )
 )

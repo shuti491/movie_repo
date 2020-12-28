@@ -8,6 +8,8 @@ const useSizeElement = () => {
     setWidth(elementRef.current.clientWidth);
   }, [elementRef.current]);
 
+  console.log(width, elementRef)
+  // debugger;
   return { width, elementRef };
 }
 
