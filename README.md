@@ -4,13 +4,13 @@ In the project directory, you can run:
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-<b>About the application:</b>
+###About the application:<br />
 Displays list of movies in slider of different genres sorted in accordance with user rating. 
 Details about the movie can be seen by clicking on the more buttonn and by hovering over the movie/series tile the trailer starts playing.
 Search bar can be used to search for any movie/series
 
 
-<b>Some screenshots of the application: </b>
+###Some screenshots of the application: <br />
 
 Click on movies to see all the latest movies  sorted in genres and displayed in the order of rating , highest rated being the first in the list of genre
 <img src="docs/movies.png" alt="content"/>
